@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Rose Pine Dawn + Solarized Light blend */
+            --base: #faf4ed;
+            --surface: #fffaf3;
+            --overlay: #f2e9e1;
+            --muted: #9893a5;
+            --subtle: #797593;
+            --text: #575279;
+            --love: #b4637a;
+            --gold: #ea9d34;
+            --rose: #d7827e;
+            --pine: #286983;
+            --foam: #56949f;
+            --iris: #907aa9;
+            --highlight: #eee8d5;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--base);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .terminal {
+            background: var(--surface);
+            border: 2px solid var(--overlay);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            border-bottom: 2px solid var(--overlay);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prompt {
+            color: var(--pine);
+            font-weight: bold;
+        }
+
+        .command {
+            color: var(--iris);
+        }
+
+        h1 {
+            color: var(--love);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: var(--foam);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .menu-item {
+            background: var(--overlay);
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--muted);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-item:hover {
+            background: var(--highlight);
+            border-color: var(--foam);
+            transform: translateY(-2px);
+        }
+
+        .menu-item.active {
+            background: var(--highlight);
+            border-color: var(--pine);
+        }
+
+        .keybind {
+            background: var(--base);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            color: var(--subtle);
+            border: 1px solid var(--muted);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hint-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--overlay);
+            border-top: 2px solid var(--muted);
+            padding: 1rem;
+            display: none;
+            animation: slideUp 0.2s;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .hint-bar.active {
+            display: block;
+        }
+
+        .hint-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hint-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hint-key {
+            background: var(--base);
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--pine);
+            border: 1px solid var(--muted);
+            min-width: 2rem;
+            text-align: center;
+        }
+
+        .hint-desc {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--iris);
+            text-decoration: none;
+            border-bottom: 1px solid var(--iris);
+        }
+
+        a:hover {
+            color: var(--love);
+            border-bottom-color: var(--love);
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin: 0.3rem 0;
+        }
+
+        .status-bar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: var(--overlay);
+            padding: 0.5rem 1rem;
+            border-bottom-left-radius: 8px;
+            border: 1px solid var(--muted);
+            font-size: 0.85rem;
+            color: var(--subtle);
+        }
+
+        .modal-hint {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .hint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        Press <span class="keybind">Space</span> for commands
+    </div>
+
+    <div class="terminal">
+        <div class="header">
+            <div><span class="prompt">~$</span> <span class="command">whoami</span></div>
+            <h1>Your Name</h1>
+            <p>Software Engineer | Full Stack Developer</p>
+        </div>
+
+        <div class="menu" id="menu">
+            <div class="menu-item active" data-section="about">
+                <span class="keybind">1</span>
+                <span>about</span>
+            </div>
+            <div class="menu-item" data-section="experience">
+                <span class="keybind">2</span>
+                <span>experience</span>
+            </div>
+            <div class="menu-item" data-section="skills">
+                <span class="keybind">3</span>
+                <span>skills</span>
+            </div>
+            <div class="menu-item" data-section="projects">
+                <span class="keybind">4</span>
+                <span>projects</span>
+            </div>
+            <div class="menu-item" data-section="contact">
+                <span class="keybind">5</span>
+                <span>contact</span>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="content-section active" id="about">
+                <h2><span class="prompt">~$</span> cat about.txt</h2>
+                <p>Hello! I'm a passionate software engineer with expertise in building scalable web applications and clean, maintainable code.</p>
+                <p style="margin-top: 1rem;">I love solving complex problems and creating elegant solutions. When I'm not coding, you can find me contributing to open source or exploring new technologies.</p>
+            </div>
+
+            <div class="content-section" id="experience">
+                <h2><span class="prompt">~$</span> cat experience.txt</h2>
+                <h3 style="color: var(--rose); margin-top: 1rem;">Senior Software Engineer</h3>
+                <p style="color: var(--subtle); font-size: 0.9rem;">Company Name | 2022 - Present</p>
+                <ul>
+                    <li>Led development of microservices architecture serving 1M+ users</li>
+                    <li>Improved application performance by 40% through optimization</li>
+                    <li>Mentored junior developers and conducted code reviews</li>
+                </ul>
+
+                <h3 style="color: var(--rose); margin-top: 1.5rem;">Software Engineer</h3>
+                <p style="color: var(--subtle); font-size: 0.9rem;">Previous Company | 2020 - 2022</p>
+                <ul>
+                    <li>Built RESTful APIs using Node.js and Express</li>
+                    <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                </ul>
+            </div>
+
+            <div class="content-section" id="skills">
+                <h2><span class="prompt">~$</span> ls skills/</h2>
+                <div style="margin-top: 1rem;">
+                    <p><strong style="color: var(--pine);">Languages:</strong> JavaScript, TypeScript, Python, Go, Java</p>
+                    <p><strong style="color: var(--pine);">Frontend:</strong> React, Vue, Next.js, HTML/CSS, Tailwind</p>
+                    <p><strong style="color: var(--pine);">Backend:</strong> Node.js, Express, Django, FastAPI, PostgreSQL, MongoDB</p>
+                    <p><strong style="color: var(--pine);">Tools:</strong> Git, Docker, Kubernetes, AWS, CI/CD, Linux</p>
+                </div>
+            </div>
+
+            <div class="content-section" id="projects">
+                <h2><span class="prompt">~$</span> ls projects/</h2>
+                <h3 style="color: var(--rose); margin-top: 1rem;">Project Name</h3>
+                <p>A full-stack application that does something amazing. Built with React, Node.js, and PostgreSQL.</p>
+                <p style="margin-top: 0.5rem;"><a href="#" target="_blank">View Project</a> | <a href="#" target="_blank">GitHub</a></p>
+
+                <h3 style="color: var(--rose); margin-top: 1.5rem;">Another Project</h3>
+                <p>An open-source tool that helps developers be more productive. Written in Python.</p>
+                <p style="margin-top: 0.5rem;"><a href="#" target="_blank">View Project</a> | <a href="#" target="_blank">GitHub</a></p>
+            </div>
+
+            <div class="content-section" id="contact">
+                <h2><span class="prompt">~$</span> cat contact.txt</h2>
+                <p style="margin-top: 1rem;">
+                    <strong style="color: var(--pine);">Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a><br>
+                    <strong style="color: var(--pine);">GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a><br>
+                    <strong style="color: var(--pine);">LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+                </p>
+                <p class="modal-hint">Feel free to reach out - I'm always open to interesting opportunities and conversations!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hint-bar" id="hintBar">
+        <div class="hint-grid">
+            <div class="hint-item">
+                <span class="hint-key">1-5</span>
+                <span class="hint-desc">Navigate sections</span>
+            </div>
+            <div class="hint-item">
+                <span class="hint-key">j</span>
+                <span class="hint-desc">Scroll down</span>
+            </div>
+            <div class="hint-item">
+                <span class="hint-key">k</span>
+                <span class="hint-desc">Scroll up</span>
+            </div>
+            <div class="hint-item">
+                <span class="hint-key">gg</span>
+                <span class="hint-desc">Go to top</span>
+            </div>
+            <div class="hint-item">
+                <span class="hint-key">G</span>
+                <span class="hint-desc">Go to bottom</span>
+            </div>
+            <div class="hint-item">
+                <span class="hint-key">Esc</span>
+                <span class="hint-desc">Close hints</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sections = ['about', 'experience', 'skills', 'projects', 'contact'];
+        let currentSection = 0;
+        let gPressed = false;
+        let gTimeout = null;
+
+        function showSection(index) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+            
+            document.getElementById(sections[index]).classList.add('active');
+            document.querySelector(`[data-section="${sections[index]}"]`).classList.add('active');
+            currentSection = index;
+        }
+
+        // Mouse navigation
+        document.querySelectorAll('.menu-item').forEach((item, index) => {
+            item.addEventListener('click', () => showSection(index));
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const hintBar = document.getElementById('hintBar');
+            
+            // Space to toggle hints
+            if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                hintBar.classList.toggle('active');
+                return;
+            }
+
+            // Escape to close hints
+            if (e.key === 'Escape') {
+                hintBar.classList.remove('active');
+                return;
+            }
+
+            // Number keys for navigation
+            if (e.key >= '1' && e.key <= '5') {
+                showSection(parseInt(e.key) - 1);
+                return;
+            }
+
+            // Vim-style navigation
+            if (e.key === 'j') {
+                window.scrollBy({ top: 100, behavior: 'smooth' });
+            } else if (e.key === 'k') {
+                window.scrollBy({ top: -100, behavior: 'smooth' });
+            } else if (e.key === 'G' && e.shiftKey) {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            } else if (e.key === 'g') {
+                if (gPressed) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    gPressed = false;
+                    clearTimeout(gTimeout);
+                } else {
+                    gPressed = true;
+                    gTimeout = setTimeout(() => {
+                        gPressed = false;
+                    }, 500);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
