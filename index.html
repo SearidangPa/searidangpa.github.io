@@ -233,7 +233,7 @@
 </head>
 <body>
     <div class="status-bar">
-        Press <span class="keybind">Space</span> for commands
+        Press <span class="keybind">?</span> for keyboard shortcuts
     </div>
 
     <div class="terminal">
@@ -365,7 +365,7 @@
             const hintBar = document.getElementById('hintBar');
             
             // Space to toggle hints
-            if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+            if (e.key === '?' && !e.target.matches('input, textarea')) {
                 e.preventDefault();
                 hintBar.classList.toggle('active');
                 return;
