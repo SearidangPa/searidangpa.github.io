@@ -256,10 +256,6 @@
                 <span class="keybind">3</span>
                 <span>projects</span>
             </div>
-            <div class="menu-item" data-section="contact">
-                <span class="keybind">4</span>
-                <span>contact</span>
-            </div>
         </div>
 
         <div id="content">
@@ -267,6 +263,14 @@
                 <h2><span class="prompt">~$</span> cat about.txt</h2>
                 <p>Hello! I'm a passionate software engineer with expertise in building scalable web applications and clean, maintainable code.</p>
                 <p style="margin-top: 1rem;">I love solving complex problems and creating elegant solutions. When I'm not coding, you can find me contributing to open source or exploring new technologies.</p>
+                
+                <h2 style="margin-top: 2rem;"><span class="prompt">~$</span> cat contact.txt</h2>
+                <p style="margin-top: 1rem;">
+                    <strong style="color: var(--pine);">Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a><br>
+                    <strong style="color: var(--pine);">GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a><br>
+                    <strong style="color: var(--pine);">LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+                </p>
+                <p class="modal-hint">Feel free to reach out - I'm always open to interesting opportunities and conversations!</p>
             </div>
 
             <div class="content-section" id="experience">
@@ -305,23 +309,13 @@
                 <p>An open-source tool that helps developers be more productive. Written in Python.</p>
                 <p style="margin-top: 0.5rem;"><a href="#" target="_blank">View Project</a> | <a href="#" target="_blank">GitHub</a></p>
             </div>
-
-            <div class="content-section" id="contact">
-                <h2><span class="prompt">~$</span> cat contact.txt</h2>
-                <p style="margin-top: 1rem;">
-                    <strong style="color: var(--pine);">Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a><br>
-                    <strong style="color: var(--pine);">GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a><br>
-                    <strong style="color: var(--pine);">LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
-                </p>
-                <p class="modal-hint">Feel free to reach out - I'm always open to interesting opportunities and conversations!</p>
-            </div>
         </div>
     </div>
 
     <div class="hint-bar" id="hintBar">
         <div class="hint-grid">
             <div class="hint-item">
-                <span class="hint-key">1-4</span>
+                <span class="hint-key">1-3</span>
                 <span class="hint-desc">Navigate sections</span>
             </div>
             <div class="hint-item">
@@ -348,7 +342,7 @@
     </div>
 
     <script>
-        const sections = ['about', 'experience', 'projects', 'contact'];
+        const sections = ['about', 'experience', 'projects'];
         let currentSection = 0;
         let gPressed = false;
         let gTimeout = null;
@@ -385,7 +379,7 @@
             }
 
             // Number keys for navigation
-            if (e.key >= '1' && e.key <= '4') {
+            if (e.key >= '1' && e.key <= '3') {
                 showSection(parseInt(e.key) - 1);
                 return;
             }
