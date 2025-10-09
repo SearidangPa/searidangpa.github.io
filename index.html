@@ -14,10 +14,10 @@
 
         :root {
             /* Rose Pine Dawn + Solarized Light blend */
-            --base: #faf4ed;
-            --surface: #fffaf3;
-            --overlay: #f2e9e1;
-            --muted: #9893a5;
+            --base: #ebe0c3;
+            --surface: #fcf5e6;
+            --overlay: #eee8d5;
+            --muted: #fcedc2;
             --subtle: #797593;
             --text: #575279;
             --love: #b4637a;
@@ -87,7 +87,7 @@
 
         .menu-item {
             background: var(--overlay);
-            padding: 0.6rem 1.0rem;
+            padding: 0.6rem 2.2rem;
             border: 1px solid var(--muted);
             border-radius: 4px;
             cursor: pointer;
@@ -252,16 +252,12 @@
                 <span class="keybind">2</span>
                 <span>experience</span>
             </div>
-            <div class="menu-item" data-section="skills">
-                <span class="keybind">3</span>
-                <span>skills</span>
-            </div>
             <div class="menu-item" data-section="projects">
-                <span class="keybind">4</span>
+                <span class="keybind">3</span>
                 <span>projects</span>
             </div>
             <div class="menu-item" data-section="contact">
-                <span class="keybind">5</span>
+                <span class="keybind">4</span>
                 <span>contact</span>
             </div>
         </div>
@@ -289,10 +285,8 @@
                     <li>Built RESTful APIs using Node.js and Express</li>
                     <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
                 </ul>
-            </div>
 
-            <div class="content-section" id="skills">
-                <h2><span class="prompt">~$</span> ls skills/</h2>
+                <h2 style="margin-top: 2rem;"><span class="prompt">~$</span> ls skills/</h2>
                 <div style="margin-top: 1rem;">
                     <p><strong style="color: var(--pine);">Languages:</strong> JavaScript, TypeScript, Python, Go, Java</p>
                     <p><strong style="color: var(--pine);">Frontend:</strong> React, Vue, Next.js, HTML/CSS, Tailwind</p>
@@ -327,7 +321,7 @@
     <div class="hint-bar" id="hintBar">
         <div class="hint-grid">
             <div class="hint-item">
-                <span class="hint-key">1-5</span>
+                <span class="hint-key">1-4</span>
                 <span class="hint-desc">Navigate sections</span>
             </div>
             <div class="hint-item">
@@ -354,7 +348,7 @@
     </div>
 
     <script>
-        const sections = ['about', 'experience', 'skills', 'projects', 'contact'];
+        const sections = ['about', 'experience', 'projects', 'contact'];
         let currentSection = 0;
         let gPressed = false;
         let gTimeout = null;
@@ -391,7 +385,7 @@
             }
 
             // Number keys for navigation
-            if (e.key >= '1' && e.key <= '5') {
+            if (e.key >= '1' && e.key <= '4') {
                 showSection(parseInt(e.key) - 1);
                 return;
             }
