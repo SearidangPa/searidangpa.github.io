@@ -62,3 +62,7 @@ I've also played around with warp, codex
 ## My current philosophy with ai tools:
 
 it is a great tool for learning.
+
+### Tools
+
+- Nvim, Fish shell, Tmux, Ghostty,
