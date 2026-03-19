@@ -25,58 +25,24 @@
     datetime(year: 1992, month: 9, day: 1),
     datetime(year: 1998, month: 4,  day: 1)
   )[
-    - Awarded “Most Determined Student” in senior year
+    - Awarded "Most Determined Student" in senior year
   ]
 ]
 
-#custom-title("Experience")[  
+#custom-title("Experience")[
   #work-heading(
-    "Regional Manager",
-    "Dunder Mifflin",
-    "Scranton, PA",
-    datetime(year:2013, month:5, day:1),
+    "Intern → Software Engineer → Software Engineer II",
+    "PreVeil",
+    "Boston, MA",
+    datetime(year:2022, month:6, day:1),
     "Present"
   )[
-    - Led a team of 10+ employees, boosting office productivity and morale
-    - Maintained the highest sales average, outperforming competitors despite market challenges
-    - Implemented innovative security measures to protect the office from threats, including criminal activity and wildlife intrusions
-    - Successfully negotiated client contracts, increasing annual revenue by 20%
-  ]
-
-  #work-heading(
-    "Assistant (to the) Regional Manager",
-    "Dunder Mifflin",
-    "Scranton, PA",
-    datetime(year:2008, month:3, day:1),
-    datetime(year:2013, month:3, day:1),
-  )[
-    - Developed and enforced company policies through the creation of the “Schrute Bucks” incentive program, improving employee engagement
-    - Achieved record-breaking sales, earning the title of top salesperson for five consecutive years
-    - Supported managerial functions, including staff supervision, client relationship management, and strategic planning
-  ]
-
-  #work-heading(
-    "Sales Associate",
-    "Staples",
-    "Scranton, PA",
-    datetime(year:2008, month:3, day:1),
-    datetime(year:2008, month:3, day:1),
-  )[
-    - Recognized as “Employee of the Month” for outstanding sales performance within a single month
-    - Leveraged exceptional customer service skills to build a loyal client base
-    - Demonstrated leadership by training new hires on effective sales techniques
-  ]
-
-  #work-heading(
-    "Assistant (to the) Regional Manager",
-    "Dunder Mifflin",
-    "Scranton, PA",
-    datetime(year:2008, month:3, day:1),
-    datetime(year:2005, month:3, day:1),
-  )[
-    - Exceeded individual sales targets, contributing significantly to branch profitability
-    - Introduced “Schrute Bucks” as a motivational tool, fostering a competitive \& collaborative work environment
-    - Assisted in coordinating office events and initiatives to maintain team cohesion
+    - Built PreVeil's Windows Cloud Drive client from the ground up in Go, learning to work with the largely undocumented Windows Cloud Files API (cldapi) and kernel32 interop through experimentation and iterative development -- shipping 378 merged PRs across 17 months
+    - Optimized placeholder file hydration by implementing concurrent out-of-band worker queues, WaitGroup-based flow control, concurrency limiters, and priority queue scheduling for pinned folder re-scanning
+    - Built a diagnostic dashboard for real-time monitoring of file hydration progress, upload/update status, and per-user log export, with hot-reloading support and automatic dark/light mode
+    - Established and maintained CI test infrastructure including integration test framework, scenario test revival, flaky test fixes, GitHub Actions workflows, PR title linting, and gofmt enforcement -- ensuring tests run fast and stable
+    - Contributed 243+ PRs to the Go-based file sync daemon, including WebSocket client connection pooling with interruptible reconnection, cloud edit with file locking and auto-save, ACL permission caching, and real-time Explorer notification handling
+    - Co-authored 52+ PRs with team members on shell extension integration, COM server, telemetry infrastructure, and ACL subsystems
   ]
 ]
 
