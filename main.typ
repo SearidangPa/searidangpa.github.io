@@ -20,12 +20,21 @@
 
 #custom-title("Education")[
   #education-heading(
-    "Middlebury College", "Scranton, PA",
-    "Bachelor of Arts", "Business Administration",
-    datetime(year: 1992, month: 9, day: 1),
-    datetime(year: 1998, month: 4,  day: 1)
+    "Northeastern University", "Boston, MA",
+    "Master of Science", "Computer Science",
+    datetime(year: 2020, month: 9, day: 1),
+    datetime(year: 2022, month: 12, day: 1)
   )[
-    - Awarded "Most Determined Student" in senior year
+    - GPA: 4.0
+  ]
+
+  #education-heading(
+    "Middlebury College", "Middlebury, VT",
+    "Bachelor of Arts", "Computer Science and Mathematics",
+    datetime(year: 2016, month: 9, day: 1),
+    datetime(year: 2020, month: 5, day: 1)
+  )[
+    - GPA: 3.95, Phi Beta Kappa
   ]
 ]
 
