@@ -31,7 +31,7 @@
 
 #custom-title("Experience")[
   #work-heading(
-    "Intern → Software Engineer → Software Engineer II",
+    "Intern → SWE → SWE II",
     "PreVeil",
     "Boston, MA",
     datetime(year:2022, month:6, day:1),
