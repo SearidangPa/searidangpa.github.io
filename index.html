@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Software Engineer</title>
+    <title>Searidang Pa</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/jetbrains-mono.min.css">
     <style>
         * {
@@ -13,11 +13,11 @@
         }
 
         :root {
-            /* Rose Pine Dawn + Solarized Light blend */
-            --base: #ebe0c3;
-            --surface: #fcf5e6;
-            --overlay: #eee8d5;
-            --muted: #fcedc2;
+            /* Rose Pine Dawn (light) */
+            --base: #faf4ed;
+            --surface: #fffaf3;
+            --overlay: #f2e9e1;
+            --muted: #9893a5;
             --subtle: #797593;
             --text: #575279;
             --love: #b4637a;
@@ -26,16 +26,43 @@
             --pine: #286983;
             --foam: #56949f;
             --iris: #907aa9;
-            --highlight: #eee8d5;
+            --highlight-low: #f4ede8;
+            --highlight-med: #dfdad9;
+            --highlight-high: #cecacd;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* Rose Pine Moon (dark) */
+                --base: #232136;
+                --surface: #2a273f;
+                --overlay: #393552;
+                --muted: #6e6a86;
+                --subtle: #908caa;
+                --text: #e0def4;
+                --love: #eb6f92;
+                --gold: #f6c177;
+                --rose: #ea9a97;
+                --pine: #3e8fb0;
+                --foam: #9ccfd8;
+                --iris: #c4a7e7;
+                --highlight-low: #2a283e;
+                --highlight-med: #44415a;
+                --highlight-high: #56526e;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.05rem;  
+            font-size: 1.05rem;
             background: var(--base);
             color: var(--text);
             line-height: 1.6;
-            padding: 2rem;
+            padding: 2rem 2rem 3.5rem 2rem;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -45,22 +72,13 @@
             border: 2px solid var(--overlay);
             border-radius: 8px;
             padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
         }
 
         .header {
             border-bottom: 2px solid var(--overlay);
             padding-bottom: 1rem;
             margin-bottom: 1.5rem;
-        }
-
-        .prompt {
-            color: var(--pine);
-            font-weight: bold;
-        }
-
-        .command {
-            color: var(--iris);
         }
 
         h1 {
@@ -78,108 +96,19 @@
             gap: 0.5rem;
         }
 
-        .menu {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .menu-item {
-            background: var(--overlay);
-            padding: 0.6rem 2.2rem;
-            border: 1px solid var(--muted);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .menu-item:hover {
-            background: var(--highlight);
-            border-color: var(--foam);
-            transform: translateY(-2px);
-        }
-
-        .menu-item.active {
-            background: var(--highlight);
-            border-color: var(--pine);
-        }
-
-        .keybind {
-            background: var(--base);
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-size: 0.85rem;
-            color: var(--subtle);
-            border: 1px solid var(--muted);
-        }
-
         .content-section {
-            display: none;
-            animation: fadeIn 0.3s;
+            margin-bottom: 2rem;
+            scroll-margin-top: 1rem;
         }
 
-        .content-section.active {
-            display: block;
+        .content-section:last-child {
+            margin-bottom: 0;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hint-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--overlay);
-            border-top: 2px solid var(--muted);
-            padding: 1rem;
-            display: none;
-            animation: slideUp 0.2s;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        .hint-bar.active {
-            display: block;
-        }
-
-        .hint-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.8rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hint-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .hint-key {
-            background: var(--base);
-            padding: 0.3rem 0.6rem;
-            border-radius: 3px;
-            font-weight: bold;
-            color: var(--pine);
-            border: 1px solid var(--muted);
-            min-width: 2rem;
-            text-align: center;
-        }
-
-        .hint-desc {
-            color: var(--text);
-            font-size: 0.9rem;
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--highlight-med);
+            margin: 1.5rem 0;
         }
 
         a {
@@ -202,188 +131,230 @@
             margin: 0.3rem 0;
         }
 
-        .status-bar {
+        /* tmux-style bottom bar */
+        .tmux-bar {
             position: fixed;
-            top: 0;
+            bottom: 0;
+            left: 0;
             right: 0;
             background: var(--overlay);
-            padding: 0.5rem 1rem;
-            border-bottom-left-radius: 8px;
-            border: 1px solid var(--muted);
-            font-size: 0.85rem;
-            color: var(--subtle);
+            color: var(--text);
+            font-size: 0.75rem;
+            padding: 0.35rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            border-top: 1px solid var(--highlight-med);
         }
 
-        .modal-hint {
+        .tmux-left {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .tmux-section {
+            padding: 0.15rem 0.6rem;
+            cursor: pointer;
             color: var(--muted);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            font-style: italic;
+            transition: color 0.2s, background 0.2s;
+            border-bottom: none;
+        }
+
+        .tmux-section:hover {
+            color: var(--text);
+            background: var(--highlight-med);
+            border-bottom: none;
+        }
+
+        .tmux-section.active {
+            color: var(--base);
+            background: var(--foam);
+            font-weight: bold;
+            border-bottom: none;
+        }
+
+        .tmux-section .tmux-index {
+            color: var(--gold);
+            margin-right: 0.15rem;
+        }
+
+        .tmux-section.active .tmux-index {
+            color: var(--base);
+        }
+
+        .tmux-right {
+            color: var(--muted);
+            font-size: 0.7rem;
+        }
+
+        .tmux-hint-key {
+            color: var(--gold);
         }
 
         @media (max-width: 600px) {
             body {
-                padding: 1rem;
-            }
-            .hint-grid {
-                grid-template-columns: 1fr;
+                padding: 1rem 1rem 3.5rem 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="status-bar">
-        Press <span class="keybind">?</span> for keyboard shortcuts
-    </div>
-
     <div class="terminal">
         <div class="header">
-            <h1>Your Name</h1>
-            <p>Software Engineer | Full Stack Developer</p>
-        </div>
-
-        <div class="menu" id="menu">
-            <div class="menu-item active" data-section="about">
-                <span class="keybind">1</span>
-                <span>about</span>
-            </div>
-            <div class="menu-item" data-section="experience">
-                <span class="keybind">2</span>
-                <span>experience</span>
-            </div>
-            <div class="menu-item" data-section="projects">
-                <span class="keybind">3</span>
-                <span>projects</span>
-            </div>
+            <h1>Searidang Pa</h1>
+            <p>
+                <a href="tel:+16177646897">+1 (617) 764-6897</a> |
+                <a href="mailto:dangsyncpa@gmail.com">dangsyncpa@gmail.com</a> |
+                <a href="https://github.com/SearidangPa" target="_blank">github.com/SearidangPa</a>
+            </p>
         </div>
 
         <div id="content">
-            <div class="content-section active" id="about">
-                <h2>About</h2>
-                <p>Hello! I'm a passionate software engineer with expertise in building scalable web applications and clean, maintainable code.</p>
-                <p style="margin-top: 1rem;">I love solving complex problems and creating elegant solutions. When I'm not coding, you can find me contributing to open source or exploring new technologies.</p>
-                
-                <h2 style="margin-top: 2rem;">Contact</h2>
-                <p style="margin-top: 1rem;">
-                    <strong style="color: var(--pine);">Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a><br>
-                    <strong style="color: var(--pine);">GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a><br>
-                    <strong style="color: var(--pine);">LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
-                </p>
-                <p class="modal-hint">Feel free to reach out - I'm always open to interesting opportunities and conversations!</p>
+            <div class="content-section" id="education">
+                <h2>Education</h2>
+                <h3 style="color: var(--rose); margin-top: 1rem;">Northeastern University</h3>
+                <p style="color: var(--subtle); font-size: 0.9rem;">Master of Science, Computer Science | Boston, MA | Sep 2020 &ndash; Dec 2022</p>
+                <ul>
+                    <li>GPA: 4.0</li>
+                </ul>
+
+                <h3 style="color: var(--rose); margin-top: 1.5rem;">Middlebury College</h3>
+                <p style="color: var(--subtle); font-size: 0.9rem;">Bachelor of Arts, Computer Science and Mathematics | Middlebury, VT | Sep 2016 &ndash; May 2020</p>
+                <ul>
+                    <li>GPA: 3.95, Phi Beta Kappa</li>
+                </ul>
             </div>
+
+            <hr class="section-divider">
 
             <div class="content-section" id="experience">
                 <h2>Experience</h2>
-                <h3 style="color: var(--rose); margin-top: 1rem;">Senior Software Engineer</h3>
-                <p style="color: var(--subtle); font-size: 0.9rem;">Company Name | 2022 - Present</p>
+                <h3 style="color: var(--rose); margin-top: 1rem;">Intern &rarr; SWE &rarr; SWE II</h3>
+                <p style="color: var(--subtle); font-size: 0.9rem;">PreVeil | Boston, MA | Jun 2022 &ndash; Present</p>
                 <ul>
-                    <li>Led development of microservices architecture serving 1M+ users</li>
-                    <li>Improved application performance by 40% through optimization</li>
-                    <li>Mentored junior developers and conducted code reviews</li>
+                    <li>Built PreVeil's Windows Cloud Drive client from the ground up in Go, learning to work with the largely undocumented Windows Cloud Files API (cldapi) and kernel32 interop through experimentation and iterative development &mdash; shipping 378 merged PRs across 17 months</li>
+                    <li>Optimized placeholder file hydration by implementing concurrent out-of-band worker queues, WaitGroup-based flow control, concurrency limiters, and priority queue scheduling for pinned folder re-scanning</li>
+                    <li>Built a diagnostic dashboard for real-time monitoring of file hydration progress, upload/update status, and per-user log export, with hot-reloading support and automatic dark/light mode</li>
+                    <li>Established and maintained CI test infrastructure including integration test framework, scenario test revival, flaky test fixes, GitHub Actions workflows, PR title linting, and gofmt enforcement &mdash; ensuring tests run fast and stable</li>
+                    <li>Contributed 243+ PRs to the Go-based file sync daemon, including WebSocket client connection pooling with interruptible reconnection, cloud edit with file locking and auto-save, ACL permission caching, and real-time Explorer notification handling</li>
+                    <li>Co-authored 52+ PRs with team members on shell extension integration, COM server, telemetry infrastructure, and ACL subsystems</li>
                 </ul>
-
-                <h3 style="color: var(--rose); margin-top: 1.5rem;">Software Engineer</h3>
-                <p style="color: var(--subtle); font-size: 0.9rem;">Previous Company | 2020 - 2022</p>
-                <ul>
-                    <li>Built RESTful APIs using Node.js and Express</li>
-                    <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
-                </ul>
-
-                <h2 style="margin-top: 2rem;">Skills</h2>
-                <div style="margin-top: 1rem;">
-                    <p><strong style="color: var(--pine);">Languages:</strong> JavaScript, TypeScript, Python, Go, Java</p>
-                    <p><strong style="color: var(--pine);">Frontend:</strong> React, Vue, Next.js, HTML/CSS, Tailwind</p>
-                    <p><strong style="color: var(--pine);">Backend:</strong> Node.js, Express, Django, FastAPI, PostgreSQL, MongoDB</p>
-                    <p><strong style="color: var(--pine);">Tools:</strong> Git, Docker, Kubernetes, AWS, CI/CD, Linux</p>
-                </div>
             </div>
+
+            <hr class="section-divider">
 
             <div class="content-section" id="projects">
                 <h2>Projects</h2>
-                <h3 style="color: var(--rose); margin-top: 1rem;">Project Name</h3>
-                <p>A full-stack application that does something amazing. Built with React, Node.js, and PostgreSQL.</p>
-                <p style="margin-top: 0.5rem;"><a href="#" target="_blank">View Project</a> | <a href="#" target="_blank">GitHub</a></p>
 
-                <h3 style="color: var(--rose); margin-top: 1.5rem;">Another Project</h3>
-                <p>An open-source tool that helps developers be more productive. Written in Python.</p>
-                <p style="margin-top: 0.5rem;"><a href="#" target="_blank">View Project</a> | <a href="#" target="_blank">GitHub</a></p>
+                <h3 style="color: var(--rose); margin-top: 1rem;">Neovim Plugin Ecosystem (Lua, Tree-sitter)</h3>
+                <p style="margin-top: 0.5rem;">Built 10+ Neovim plugins to optimize daily development workflow:</p>
+                <ul>
+                    <li><strong>sparrow</strong> &mdash; Tree-sitter-powered structural code navigation (function declarations, calls, identifiers) across Go, Lua, Rust, Zig, and Fish</li>
+                    <li><strong>blackboard.nvim</strong> &mdash; View and preview marks with surrounding context</li>
+                    <li><strong>hopcopilot.nvim</strong> &mdash; Partial acceptance of Copilot inline suggestions via label-based hopping, inspired by flash.nvim</li>
+                    <li><strong>terminal-multiplexer.nvim</strong> &mdash; Cross-platform terminal daemon management inside Neovim, solving the lack of tmux on Windows</li>
+                    <li><strong>pr.nvim</strong></li>
+                    <li><strong>butterfly.nvim</strong></li>
+                    <li><strong>go-test-t.nvim</strong> &mdash; Go test runner integration for Neovim</li>
+                    <li><strong>jira-gh.nvim</strong> &mdash; Integrate GitHub pull request workflow with Jira status</li>
+                    <li><strong>log-reader.nvim</strong> &mdash; Logrus log file viewer with syntax highlighting and parsing</li>
+                    <li><strong>big-diff</strong> &mdash; Fork of mini.diff enabling in-editor diff viewing with LSP support</li>
+                </ul>
+
+                <h3 style="color: var(--rose); margin-top: 1.5rem;">CLI Tools (Rust, Zig)</h3>
+                <ul>
+                    <li><strong>slacki</strong> (Rust)</li>
+                    <li><strong>aiusage</strong> (Rust)</li>
+                    <li><strong>ytap</strong> (Rust)</li>
+                    <li><strong>Jira-sync</strong> (Zig) &mdash; Sync Jira issues from git commit logs</li>
+                    <li><strong>worktree-swap</strong> (Zig) &mdash; Ergonomic git worktree directory swapping</li>
+                </ul>
+
+                <h3 style="color: var(--rose); margin-top: 1.5rem;">Systems (C++)</h3>
+                <ul>
+                    <li><strong>Raft-From-Scratch</strong> &mdash; Implementation of the Raft consensus protocol with leader election, log replication, and multi-client support</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class="hint-bar" id="hintBar">
-        <div class="hint-grid">
-            <div class="hint-item">
-                <span class="hint-key">1-3</span>
-                <span class="hint-desc">Navigate sections</span>
-            </div>
-            <div class="hint-item">
-                <span class="hint-key">j</span>
-                <span class="hint-desc">Scroll down</span>
-            </div>
-            <div class="hint-item">
-                <span class="hint-key">k</span>
-                <span class="hint-desc">Scroll up</span>
-            </div>
-            <div class="hint-item">
-                <span class="hint-key">gg</span>
-                <span class="hint-desc">Go to top</span>
-            </div>
-            <div class="hint-item">
-                <span class="hint-key">G</span>
-                <span class="hint-desc">Go to bottom</span>
-            </div>
-            <div class="hint-item">
-                <span class="hint-key">Esc</span>
-                <span class="hint-desc">Close hints</span>
-            </div>
+    <!-- tmux-style bottom bar -->
+    <div class="tmux-bar" id="tmuxBar">
+        <div class="tmux-left">
+            <a class="tmux-section active" href="#education" data-section="education">
+                <span class="tmux-index">1:</span>education
+            </a>
+            <a class="tmux-section" href="#experience" data-section="experience">
+                <span class="tmux-index">2:</span>experience
+            </a>
+            <a class="tmux-section" href="#projects" data-section="projects">
+                <span class="tmux-index">3:</span>projects
+            </a>
+        </div>
+        <div class="tmux-right">
+            <span class="tmux-hint-key">j</span>/<span class="tmux-hint-key">k</span> scroll
+            &nbsp;
+            <span class="tmux-hint-key">gg</span>/<span class="tmux-hint-key">G</span> top/bottom
+            &nbsp;
+            <span class="tmux-hint-key">1-3</span> jump
         </div>
     </div>
 
     <script>
-        const sections = ['about', 'experience', 'projects'];
-        let currentSection = 0;
+        const sections = ['education', 'experience', 'projects'];
         let gPressed = false;
         let gTimeout = null;
 
-        function showSection(index) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
-            
-            document.getElementById(sections[index]).classList.add('active');
-            document.querySelector(`[data-section="${sections[index]}"]`).classList.add('active');
-            currentSection = index;
+        // Scroll to section
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
-        // Mouse navigation
-        document.querySelectorAll('.menu-item').forEach((item, index) => {
-            item.addEventListener('click', () => showSection(index));
+        // Highlight active section in tmux bar based on scroll position
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.tmux-section').forEach(s => s.classList.remove('active'));
+                    const link = document.querySelector(`.tmux-section[data-section="${entry.target.id}"]`);
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, {
+            rootMargin: '-10% 0px -70% 0px',
+            threshold: 0
+        });
+
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+
+        // Click navigation on tmux bar links
+        document.querySelectorAll('.tmux-section').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = link.getAttribute('data-section');
+                scrollToSection(section);
+            });
         });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            const hintBar = document.getElementById('hintBar');
-            
-            // Space to toggle hints
-            if (e.key === '?' && !e.target.matches('input, textarea')) {
-                e.preventDefault();
-                hintBar.classList.toggle('active');
-                return;
-            }
+            if (e.target.matches('input, textarea')) return;
 
-            // Escape to close hints
-            if (e.key === 'Escape') {
-                hintBar.classList.remove('active');
-                return;
-            }
-
-            // Number keys for navigation
+            // Number keys to jump to sections
             if (e.key >= '1' && e.key <= '3') {
-                showSection(parseInt(e.key) - 1);
+                e.preventDefault();
+                scrollToSection(sections[parseInt(e.key) - 1]);
                 return;
             }
 
-            // Vim-style navigation
+            // Vim-style scrolling
             if (e.key === 'j') {
                 window.scrollBy({ top: 100, behavior: 'smooth' });
             } else if (e.key === 'k') {
