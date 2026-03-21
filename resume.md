@@ -21,32 +21,39 @@ GitHub: SearidangPa
 - Software Engineer I
   - Fix bugs
 
+## Skills
+
+- **Languages:** Go, Lua, Rust, Zig, C/C++, Python
+- **Tools:** Neovim, Fish shell, Tmux, Ghostty, Git, Tree-sitter
+
 ## Project
 
-### Neovim plugins
+### Neovim Plugin Ecosystem (Lua, Tree-sitter)
 
-I started out just tinkering some small config. One year later, I made the custom plugins below that
-are tailored to make my daily workflow enjoyable.
+Built 10+ Neovim plugins to optimize daily development workflow:
 
-- theme-loader: help with dynamically syncing themes between neovim, tmux and os
-- Butterfly
-- Blackboard
-- Jira-GH: integrate github pull request with jira status
-- Hop-copilot: Hop to the place within copilot inline-completion
-- terminal-multiplexer: easily manage terminal daemons within neovim
-- Log-reader: Read logrus files with syntax highlighting with parsing
-- Go-sparrow: fast navigation to places such as function declaration, function call, variable assignment using treesitter
-- Go-test-t: Test runner
+- **sparrow** - Tree-sitter-powered structural code navigation (function declarations, calls, identifiers) across Go, Lua, Rust, Zig, and Fish
+- **blackboard.nvim** - View and preview marks with surrounding context
+- **hopcopilot.nvim** - Partial acceptance of Copilot inline suggestions via label-based hopping, inspired by flash.nvim
+- **terminal-multiplexer.nvim** - Cross-platform terminal daemon management inside Neovim, solving the lack of tmux on Windows
+- **pr.nvim** - <placeholder to_be_updated>
+- **butterfly.nvim** - <placeholder to_be_updated>
+- **go-test-t.nvim** - Go test runner integration for Neovim
+- **jira-gh.nvim** - Integrate GitHub pull request workflow with Jira status
+- **log-reader.nvim** - Logrus log file viewer with syntax highlighting and parsing
+- **big-diff** - Fork of mini.diff enabling in-editor diff viewing with LSP support
 
-### Learning Zig
+### CLI Tools (Rust, Zig)
 
-I love the premise of zig. To incentivize myself to learn zig, I made the following projects:
+- **slacki** (Rust) - <placeholder to_be_updated>
+- **aiusage** (Rust) - <placeholder to_be_updated>
+- **ytap** (Rust) - <placeholder to_be_updated>
+- **Jira-sync** (Zig) - Sync Jira issues from git commit logs
+- **worktree-swap** (Zig) - Ergonomic git worktree directory swapping
 
-- SlackPR
-- Jira-sync: sync jira issues from git commit log
-- worktree-swap:
-  Swap two workree between two directories. This is very ergonomic to have two directories
-  that i can alternate for different tasks.
+### Systems (C++)
+
+- **Raft-From-Scratch** - Implementation of the Raft consensus protocol with leader election, log replication, and multi-client support
 
 ## AI tools
 
@@ -63,6 +70,4 @@ I've also played around with warp, codex
 
 it is a great tool for learning.
 
-### Tools
 
-- Nvim, Fish shell, Tmux, Ghostty,
