@@ -58,33 +58,42 @@
 
 #custom-title("Projects")[
   #project-heading(
-    "Schrute Farms (Bed and Breakfast)",
+    "Neovim Plugin Ecosystem (Lua, Tree-sitter)",
   )[
-    - Established and managed a family-run agro-tourism business offering unique activities such as table-making workshops, beet farming tours, and hay rides
-    - Increased guest bookings by 50% through effective online marketing and guest engagement
-    - Maintained a 4.9/5 guest satisfaction rating on travel review platforms
+    Built 10+ Neovim plugins to optimize daily development workflow:
+    - *sparrow* -- Tree-sitter-powered structural code navigation (function declarations, calls, identifiers) across Go, Lua, Rust, Zig, and Fish
+    - *blackboard.nvim* -- View and preview marks with surrounding context
+    - *hopcopilot.nvim* -- Partial acceptance of Copilot inline suggestions via label-based hopping, inspired by flash.nvim
+    - *terminal-multiplexer.nvim* -- Cross-platform terminal daemon management inside Neovim, solving the lack of tmux on Windows
+    - *pr.nvim* -- \<placeholder to_be_updated\>
+    - *butterfly.nvim* -- \<placeholder to_be_updated\>
+    - *go-test-t.nvim* -- Go test runner integration for Neovim
+    - *jira-gh.nvim* -- Integrate GitHub pull request workflow with Jira status
+    - *log-reader.nvim* -- Logrus log file viewer with syntax highlighting and parsing
+    - *big-diff* -- Fork of mini.diff enabling in-editor diff viewing with LSP support
   ]
 
   #project-heading(
-    "Dwight Schrute's Gym for Muscles",
+    "CLI Tools (Rust, Zig)",
   )[
-    - Designed and equipped a workplace gym, promoting health and wellness for Dunder Mifflin employees
-    - Created a recycling program, offering monetary incentives (5 cents per yard of tin) to encourage sustainable practices
+    - *slacki* (Rust) -- \<placeholder to_be_updated\>
+    - *aiusage* (Rust) -- \<placeholder to_be_updated\>
+    - *ytap* (Rust) -- \<placeholder to_be_updated\>
+    - *Jira-sync* (Zig) -- Sync Jira issues from git commit logs
+    - *worktree-swap* (Zig) -- Ergonomic git worktree directory swapping
   ]
 
   #project-heading(
-    "Sesame Avenue Daycare Center for Infants and Toddlers",
+    "Systems (C++)",
   )[
-    - Founded an innovative daycare focused on cognitive development and early learning strategies
-    - Developed specialized programs combining physical activities and educational games for children
+    - *Raft-From-Scratch* -- Implementation of the Raft consensus protocol with leader election, log replication, and multi-client support
   ]
 ]
 
 
 #custom-title("Skills")[
   #skills()[
-    - *Professional Skills:* Sales Expertise, Leadership, Conflict Resolution, Strategic Planning, Negotiation
-    - *Personal Traits:* Hardworking, Alpha Male, Jackhammer, Merciless, Insatiable
-    - *Specialized Talents:* Karate (Black Belt), Jujitsu, Werewolf Hunting, Table Making
+    - *Languages:* Go, Lua, Rust, Zig, C/C++, Python
+    - *Tools:* Neovim, Fish shell, Tmux, Ghostty, Git, Tree-sitter
   ]
 ]
