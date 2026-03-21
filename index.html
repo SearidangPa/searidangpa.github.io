@@ -143,7 +143,7 @@
             padding: 0.35rem 1rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             z-index: 100;
             border-top: 1px solid var(--highlight-med);
         }
@@ -184,14 +184,6 @@
             color: var(--base);
         }
 
-        .tmux-right {
-            color: var(--muted);
-            font-size: 0.7rem;
-        }
-
-        .tmux-hint-key {
-            color: var(--gold);
-        }
 
         @media (max-width: 600px) {
             body {
@@ -212,6 +204,22 @@
         </div>
 
         <div id="content">
+            <div class="content-section" id="experience">
+                <h2>Experience</h2>
+                <h3 style="color: var(--rose); margin-top: 1rem;">Intern &rarr; SWE &rarr; SWE II</h3>
+                <p style="color: var(--subtle); font-size: 0.9rem;">PreVeil | Boston, MA | Jun 2022 &ndash; Present</p>
+                <ul>
+                    <li>Built PreVeil's Windows Cloud Drive client from the ground up in Go, learning to work with the largely undocumented Windows Cloud Files API (cldapi) and kernel32 interop through experimentation and iterative development &mdash; shipping 378 merged PRs across 17 months</li>
+                    <li>Optimized placeholder file hydration by implementing concurrent out-of-band worker queues, WaitGroup-based flow control, concurrency limiters, and priority queue scheduling for pinned folder re-scanning</li>
+                    <li>Built a diagnostic dashboard for real-time monitoring of file hydration progress, upload/update status, and per-user log export, with hot-reloading support and automatic dark/light mode</li>
+                    <li>Established and maintained CI test infrastructure including integration test framework, scenario test revival, flaky test fixes, GitHub Actions workflows, PR title linting, and gofmt enforcement &mdash; ensuring tests run fast and stable</li>
+                    <li>Contributed 243+ PRs to the Go-based file sync daemon, including WebSocket client connection pooling with interruptible reconnection, cloud edit with file locking and auto-save, ACL permission caching, and real-time Explorer notification handling</li>
+                    <li>Co-authored 52+ PRs with team members on shell extension integration, COM server, telemetry infrastructure, and ACL subsystems</li>
+                </ul>
+            </div>
+
+            <hr class="section-divider">
+
             <div class="content-section" id="education">
                 <h2>Education</h2>
                 <h3 style="color: var(--rose); margin-top: 1rem;">Northeastern University</h3>
@@ -224,22 +232,6 @@
                 <p style="color: var(--subtle); font-size: 0.9rem;">Bachelor of Arts, Computer Science and Mathematics | Middlebury, VT | Sep 2016 &ndash; May 2020</p>
                 <ul>
                     <li>GPA: 3.95, Phi Beta Kappa</li>
-                </ul>
-            </div>
-
-            <hr class="section-divider">
-
-            <div class="content-section" id="experience">
-                <h2>Experience</h2>
-                <h3 style="color: var(--rose); margin-top: 1rem;">Intern &rarr; SWE &rarr; SWE II</h3>
-                <p style="color: var(--subtle); font-size: 0.9rem;">PreVeil | Boston, MA | Jun 2022 &ndash; Present</p>
-                <ul>
-                    <li>Built PreVeil's Windows Cloud Drive client from the ground up in Go, learning to work with the largely undocumented Windows Cloud Files API (cldapi) and kernel32 interop through experimentation and iterative development &mdash; shipping 378 merged PRs across 17 months</li>
-                    <li>Optimized placeholder file hydration by implementing concurrent out-of-band worker queues, WaitGroup-based flow control, concurrency limiters, and priority queue scheduling for pinned folder re-scanning</li>
-                    <li>Built a diagnostic dashboard for real-time monitoring of file hydration progress, upload/update status, and per-user log export, with hot-reloading support and automatic dark/light mode</li>
-                    <li>Established and maintained CI test infrastructure including integration test framework, scenario test revival, flaky test fixes, GitHub Actions workflows, PR title linting, and gofmt enforcement &mdash; ensuring tests run fast and stable</li>
-                    <li>Contributed 243+ PRs to the Go-based file sync daemon, including WebSocket client connection pooling with interruptible reconnection, cloud edit with file locking and auto-save, ACL permission caching, and real-time Explorer notification handling</li>
-                    <li>Co-authored 52+ PRs with team members on shell extension integration, COM server, telemetry infrastructure, and ACL subsystems</li>
                 </ul>
             </div>
 
@@ -283,27 +275,21 @@
     <!-- tmux-style bottom bar -->
     <div class="tmux-bar" id="tmuxBar">
         <div class="tmux-left">
-            <a class="tmux-section active" href="#education" data-section="education">
-                <span class="tmux-index">1:</span>education
+            <a class="tmux-section active" href="#experience" data-section="experience">
+                <span class="tmux-index">1:</span>experience
             </a>
-            <a class="tmux-section" href="#experience" data-section="experience">
-                <span class="tmux-index">2:</span>experience
+            <a class="tmux-section" href="#education" data-section="education">
+                <span class="tmux-index">2:</span>education
             </a>
             <a class="tmux-section" href="#projects" data-section="projects">
                 <span class="tmux-index">3:</span>projects
             </a>
         </div>
-        <div class="tmux-right">
-            <span class="tmux-hint-key">j</span>/<span class="tmux-hint-key">k</span> scroll
-            &nbsp;
-            <span class="tmux-hint-key">gg</span>/<span class="tmux-hint-key">G</span> top/bottom
-            &nbsp;
-            <span class="tmux-hint-key">1-3</span> jump
-        </div>
+
     </div>
 
     <script>
-        const sections = ['education', 'experience', 'projects'];
+        const sections = ['experience', 'education', 'projects'];
         let gPressed = false;
         let gTimeout = null;
 
@@ -346,6 +332,7 @@
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.target.matches('input, textarea')) return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
 
             // Number keys to jump to sections
             if (e.key >= '1' && e.key <= '3') {
