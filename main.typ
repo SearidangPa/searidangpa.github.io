@@ -4,7 +4,7 @@
 #let phone = "+1 (617) 764-6897"
 #let email = "dangsyncpa@gmail.com"
 #let github = "SearidangPa"
-// #let personal-site = "dwightschrute.com"
+#let personal-site = "searidangpa.github.io/my_resume"
 
 #show: resume.with(
   top-margin: 0.45in,
@@ -14,7 +14,7 @@
   author-name: name,
   phone: phone,
   email: email,
-  // website: personal-site,
+  website: personal-site,
   github-username: github
 )
 
