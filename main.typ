@@ -4,7 +4,7 @@
 #let phone = "+1 (617) 764-6897"
 #let email = "dangsyncpa@gmail.com"
 #let github = "SearidangPa"
-#let personal-site = "searidangpa.github.io/my_resume"
+#let personal-site = "searidangpa.github.io"
 
 #show: resume.with(
   top-margin: 0.45in,
