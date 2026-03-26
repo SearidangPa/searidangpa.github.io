@@ -60,17 +60,28 @@
   #project-heading(
     "Neovim Plugin Ecosystem (Lua, Tree-sitter)",
   )[
-    Built 10+ Neovim plugins to optimize daily development workflow:
+    Neovim plugins for the joy from increasing the smooth flow of daily development workflow:
+
+    // help with local code review
+    - *big-diff* -- Fork of mini.diff enabling in-editor diff viewing with LSP support
+
+    // help with local code completion
+    - *hopcopilot.nvim* -- Partial acceptance of Copilot inline suggestions via label-based hopping, inspired by flash.nvim
+    // navigation
+    - *butterfly.nvim* -- \<placeholder to_be_updated\>
     - *sparrow* -- Tree-sitter-powered structural code navigation (function declarations, calls, identifiers) across Go, Lua, Rust, Zig, and Fish
     - *blackboard.nvim* -- View and preview marks with surrounding context
-    - *hopcopilot.nvim* -- Partial acceptance of Copilot inline suggestions via label-based hopping, inspired by flash.nvim
+
+    // help with automation and manual testing 
     - *terminal-multiplexer.nvim* -- Cross-platform terminal daemon management inside Neovim, solving the lack of tmux on Windows
-    - *pr.nvim* -- \<placeholder to_be_updated\>
-    - *butterfly.nvim* -- \<placeholder to_be_updated\>
     - *go-test-t.nvim* -- Go test runner integration for Neovim
-    - *jira-gh.nvim* -- Integrate GitHub pull request workflow with Jira status
+
+    // help with debugging and navigation to real code location from log
     - *log-reader.nvim* -- Logrus log file viewer with syntax highlighting and parsing
-    - *big-diff* -- Fork of mini.diff enabling in-editor diff viewing with LSP support
+
+    // Smooth workflow
+    - *jira-gh.nvim* -- Integrate GitHub pull request workflow with Jira status
+    - *pr.nvim* -- \<placeholder to_be_updated\>
   ]
 
   #project-heading(
