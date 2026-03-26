@@ -85,17 +85,20 @@
   ]
 
   #project-heading(
-    "CLI Tools (Rust, Zig)",
+    "Fun CLI Tools (Zig)",
   )[
-    - *slacki* (Rust) -- \<placeholder to_be_updated\>
-    - *aiusage* (Rust) -- \<placeholder to_be_updated\>
-    - *ytap* (Rust) -- \<placeholder to_be_updated\>
     - *Jira-sync* (Zig) -- Sync Jira issues from git commit logs
     - *worktree-swap* (Zig) -- Ergonomic git worktree directory swapping
+    - *aiusage* (Rust) -- Query usage across multiple subscriptions: OpenAI, Anthropic, and so on in one place. 
+  ]
+  #project-heading(
+    "CLI Tools for smooth workflows (Zig)",
+  )[
+    - *ytap* (Rust) -- wrapper of yt-dlp for downloading YouTube videos with sponsorblock support and convert to audiobook format with chapter metadata and load it into Apple Books app.
   ]
 
   #project-heading(
-    "Systems (C++)",
+    "School Project in C++"
   )[
     - *Raft-From-Scratch* -- Implementation of the Raft consensus protocol with leader election, log replication, and multi-client support
   ]
